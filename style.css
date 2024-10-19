@@ -1,0 +1,315 @@
+/* Remove layer if you have own domain*/
+img{
+    display: none;
+}
+
+
+*{
+    scroll-behavior: smooth;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+body{
+    margin: 0;
+    padding: 0;
+    background: #303030;
+    /* background: rgb(251, 255, 0); */
+    color: white;
+}
+body::-webkit-scrollbar{
+    width: 8px;
+    background-color: transparent;
+}
+body::-webkit-scrollbar-thumb{
+    background: rgb(96, 96, 96);
+    border-radius: 5px;
+}
+
+
+header{
+    position: fixed;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+header .more{
+    margin: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-direction: column;
+    height: 20px;
+    width: 30px;
+    cursor: pointer;
+}
+.lines{
+    width: 100%;
+    height: 4px;
+    border-radius: 10px;
+    /* background: black; */
+    background: white;
+}
+.lines:nth-child(2){
+    width: 80%;
+}
+.lines:nth-child(3){
+    width: 60%;
+}
+#more-popup{
+    height: 100vh;
+    width: 100%;
+    position: absolute;
+    display: none;
+}
+#popup{
+    height: 250px;
+    width: 200px;
+    padding: 10px 0;
+    border-left: 0.1px solid white;
+    border-bottom: 0.1px solid white;
+    border-radius: 0px 0px 0px 50px;
+    background: black;
+    position: absolute;
+    display: none;
+    /* display: flex; */
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+#popup a{
+    transition: 0.1s linear;
+    font-size: 20px;
+    text-decoration: none;
+    color: white;
+}
+#popup a:hover{
+    text-decoration: underline;
+    transform: translateY(-2px);
+}
+
+
+.main{
+    height: 100vh;
+    height: 100dvh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.main-background{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: -10;
+    /* background: linear-gradient(to top, transparent, rgb(0, 94, 255)); */
+}
+.main span{
+    text-align: center;
+}
+h1{
+    font-size: 100px;
+    margin: 0;
+}
+.main span{
+    font-size: 20px;
+}
+
+
+#projects{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+#project{
+    height: 200px;
+    width: 250px;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 10px;
+    background: rgb(160, 160, 160);
+    /* background: linear-gradient(to bottom, lightblue, white); */
+    transition: scale 0.2s linear;
+    position: relative;
+}
+#project:hover{
+    scale: 1.05;
+}
+#project .try{
+    position: absolute;
+    right: 30px;
+    bottom: 30px;
+    padding: 10px 20px;
+    background: black;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 20px;
+    transition: 0.2s ease-in-out;
+    font-size: 13px;
+}
+#project .try::before{
+    content: 'Try Now';
+}
+#project .try:active{
+    background: white;
+    color: black;
+}
+
+
+
+.products{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+.products-all{
+    border-radius: 20px;
+    width: 100%;
+    height: 30px;
+    background: grey;
+    margin: 20px;
+    padding: 0px 20px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+.products a{
+    color: rgb(0, 234, 255);
+    transition: 0.2s linear;
+    font-weight: bold;
+    font-size: 18px;
+}
+.products a:hover{
+    transform: translateY(-3px);
+}
+.product{
+    height: 200px;
+    width: 260px;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 10px;
+    background: rgb(160, 160, 160);
+    /* background: linear-gradient(to bottom, lightblue, white); */
+    transition: scale 0.2s linear;
+}
+.product:hover{
+    scale: 1.05;
+}
+
+
+.title{
+    display: flex;
+    justify-content: center;
+    font-size: 40px;
+    font-weight: bold;
+    padding-top: 50px;
+    margin-bottom: 50px;
+    text-shadow: 5px 5px 10px black;
+}
+h2{
+    margin: 0;
+}
+.members{
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 50px; /*remove later*/
+    flex-wrap: wrap;
+}
+.members li{
+    font-size: 18px;
+}
+.leader, .member{
+    height: 180px;
+    width: 180px;
+    padding: 30px;
+    margin: 10px;
+    background: grey;
+    border-radius: 8px; /* Optional: Rounded corners for a softer look */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Subtle box-shadow */
+    transition: scale 0.2s linear;
+}
+.leader:hover, .member:hover{
+    scale: 1.05;
+}
+.member a{
+    text-decoration: none;
+    background: white;
+    font-weight: bold;
+    color: black;
+    padding: 5px 10px;
+    float: right;
+    transition: 0.2s linear;
+    animation: flicker 5s infinite;
+}
+.member a:hover{
+    background-color: black;
+    color: white;
+    animation: none;
+}
+@keyframes flicker{
+    0%, 100%{
+        background: black;
+        color: white;
+    }
+    50%{
+        background: white;
+        color: black;
+    }
+}
+
+
+#abouts{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#abouts p{
+    text-align: center;
+}
+#abouts a{
+    color: rgb(0, 234, 255);
+}
+
+
+#contacts{
+    color: aliceblue;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.contact{
+    height: auto;
+    width: 90%;
+    border-radius: 20px;
+    margin-bottom: 50px;
+}
+#contacts p{
+    margin: 10px;
+    font-weight: bold;
+    font-size: 17px;
+}
+#contacts a{
+    color: rgb(0, 234, 255);
+    text-decoration: none;
+}
+#contacts a:hover{
+    text-decoration: underline;
+}
+
+
+footer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 150px;
+    font-size: 20px;
+}
+footer p{
+    font-size: 15px;
+}
