@@ -55,7 +55,7 @@ header a{
     border-radius: 0px 0px 0px 20px;
     display: none;
 }
-header a:hover{
+header div a:hover{
     text-decoration: underline 2px;
 }
 header .more{
@@ -90,44 +90,18 @@ header .more{
     position: absolute;
     display: none;
 }
-
-.intro{
-    width: 100%;
-    text-align: center;
-    height: 100vh;
-    min-height: 400px;
-    max-height: 1000px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-.intro h1{
-    font-size: 100px;
-    margin: 0;
-    animation: intro 2s 1;
-}
-.intro h2{
-    margin: 0;
-    font-size: 110px;
-    font-weight: 1000;
-    animation: intro 2s 1 ease-in-out;
-}
-@keyframes intro{
-    0%{
-        left: -1000px;
-        position: relative;
+@media (max-width: 630px){
+    header .others{
+        display: none;
     }
-    100%{
-        left: 1000px;
+    header #others2{
+        display: flex;
+    }
+    header .more{
+        display: flex;
     }
 }
 
-
-main{
-    margin: 120px 20px;
-    width: calc(100% - 40px);
-    height: 100%;
-}
 
 
 footer{
@@ -187,9 +161,14 @@ h3{
 
 
 
+/* main{ */
+    /* margin: 120px 20px; */
+    /* width: calc(100% - 40px); */
+    /* height: 100%; */
+/* } */
 
-.temp-api{
+/* .temp-api{
     background: grey;
     padding: 20px;
     border-radius: 20px;
-}
+} */

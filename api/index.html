@@ -18,66 +18,163 @@
 <body>
     <header>
         <a href="/">BitMindAI</a>
-        <div class="position-more">
-            <div class="more" id="more">
-                <div class="lines"></div>
-                <div class="lines"></div>
-                <div class="lines"></div>
-            </div>
-            <div id="more-popup"></div>
+        <div class="others">
+            <a href="#abouts">Abouts</a>
+            <a href="">Features</a>
+            <a href="">BuyNow</a>
+            <a href="/developer/">Developers</a>
+        </div>
+        
+        
+        <div class="more" id="more">
+            <div class="lines"></div>
+            <div class="lines"></div>
+            <div class="lines"></div>
+        </div>
+        <div id="more-popup">
             <div id="popup">
-                <a href="#developers">For Developer</a>
-                <a href="#contact">Contact Us</a>
-                <a href="#works">Our Works</a>
-                <a href="#about">About</a>
-                <a href="/">Help</a>
+                <a href="#abouts">Abouts</a>
+                <a href="">Features</a>
+                <a href="">BuyNow</a>
+                <a href="/developer/">Developers</a>
             </div>
         </div>
     </header>
 
 
-    <main>
 
+    <main>
         <h1>Temporary API Keys</h1>
         <div class="temp-api">
-            <form action="">
+            <h3>Generate an API key</h3>
+            <p>Try the API key for a short period to familiarize yourself with how our API works. Once the key expires, it cannot be reused.</p>
 
-            
-                <h3>Generate an API key</h3>
-                <p>Try API key for a short peroid of time so that you can get familiar with how our api works, once the api key expires it can never be used again it is a one time api key.</p>
+            <form id="apiForm">
     
-                <label for="">UserName</label>
-                <input type="text">
+                <label for="username">UserName</label>
+                <input type="text" id="username" required>
     
                 <br>
     
-                <label for="">Allow my Specific site to use this API</label>
-                <input type="checkbox">
+                <label for="site">
+                    Allow my specific site to use this API
+                    <input type="checkbox" id="allowSite" onclick="showPopup()">
+                </label>
     
                 <br>
+
+                <div id="pop" style="display: none;">
+                    <label for="webaddress">Enter web address e.g., https://youtube.com, https://instagram.com, https://mydomain.com, http://127.0.0.1:3000</label>
+                    <input type="text" id="webaddress">
+                    <br>
+                </div>
     
-                <label for="">Enter webaddress eg: youtube.com, instagram.com, mydomain.com</label>
-                <input type="text">
     
-                <br>
-    
-                <label for="">API timeout (hours)</label>
-                <input type="number" min="1" max="4">
+                <label for="timeout">API timeout (hours)</label>
+                <input type="number" id="timeout" min="1" max="4" required>
     
                 <br>
     
                 <button type="submit">Generate</button>
             </form>
+    
             <button id="js">Javascript</button>
             <button id="py">Python</button>
-
-            <code style="word-wrap: break-word;">
-zfd
-asdf 
-asd
-            </code>
-        </div> 
+    
+            <div id="codeBox" class="code-box" style="display: none;">
+                <pre id="codeContent"></pre>
+            </div>
+    
+            <div id="apiDisplay" style="display: none;">
+                <p id="apiKeyPreview"></p>
+                <button id="showFullKey">Show Full API Key</button>
+                <button id="copyKey">Copy API Key</button>
+            </div>
+        </div>
     </main>
+    
+    <style>
+        main {
+            font-family: Arial, sans-serif;
+            margin: 50px 100px;
+            padding: 20px;
+            max-width: 1200px;
+        }
+    
+        .temp-api form {
+            display: flex;
+            flex-direction: column;
+            max-width: 600px;
+        }
+    
+        .temp-api label {
+            margin: 10px 0 5px;
+        }
+    
+        .temp-api input {
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+    
+        .temp-api button {
+            padding: 10px;
+            margin: 10px 0;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    
+        .temp-api button:hover {
+            background-color: #45a049;
+        }
+    
+        .code-box {
+            background-color: #f4f4f4;
+            color: #000;
+            padding: 20px;
+            border: 1px solid #ccc;
+            margin-top: 10px;
+            overflow-x: scroll;
+            border-radius: 20px;
+        }
+        .code-box::-webkit-scrollbar{
+            height: 5px;
+            background-color: transparent;
+        }
+        .code-box::-webkit-scrollbar-thumb{
+            background: rgb(96, 96, 96);
+            border-radius: 5px;
+        }
+
+        #pop {
+            width: 100%;
+        }
+        #pop input{
+            width: 96%;
+        }
+
+        @media(max-width:630px){
+            main{
+                margin: 50px 10px;
+            }
+        }
+    </style>
+    
+    <script>
+        function showPopup(){
+            if (document.getElementById('pop').style.display == 'block'){
+                document.getElementById('pop').style.display = 'none';
+            } else {
+                document.getElementById('pop').style.display = 'block'
+                return true
+            }
+            return false
+        }
+    </script>
 
 
     
