@@ -56,12 +56,101 @@ document.getElementById('apiForm').addEventListener('submit', function(event) {
                 alert('API Key copied to clipboard');
             });
         };
+
+        document.getElementById('tryAPI').onclick = function(){
+            openApiPopup(apiKey)
+        }
     })
     .catch(error => {
         console.error('Error:', error);
     });
 });
 
+
+function openApiPopup(apiKey) {
+    const popupContainer = document.createElement('div');
+    popupContainer.id = 'apiCallPopup';
+    popupContainer.style.display = 'flex';
+    popupContainer.style.position = 'fixed';
+    popupContainer.style.top = '0';
+    popupContainer.style.left = '0';
+    popupContainer.style.width = '100%';
+    popupContainer.style.height = '100%';
+    popupContainer.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+    popupContainer.style.justifyContent = 'center';
+    popupContainer.style.alignItems = 'center';
+    popupContainer.style.zIndex = '1000';
+
+    const popupContent = document.createElement('div');
+    popupContent.style.background = '#333';
+    popupContent.style.padding = '20px';
+    popupContent.style.borderRadius = '8px';
+    popupContent.style.color = 'white';
+    popupContent.style.textAlign = 'center';
+
+    const usernameInput = document.createElement('input');
+    usernameInput.placeholder = 'Enter your username';
+    usernameInput.id = 'apiUsername';
+    usernameInput.style.marginBottom = '10px';
+    popupContent.appendChild(usernameInput);
+
+    const userPromptInput = document.createElement('input');
+    userPromptInput.placeholder = 'Enter your prompt';
+    userPromptInput.id = 'userPrompt';
+    userPromptInput.style.marginBottom = '10px';
+    popupContent.appendChild(userPromptInput);
+
+    const submitButton = document.createElement('button');
+    submitButton.innerText = 'Submit';
+    submitButton.style.marginRight = '10px';
+    popupContent.appendChild(submitButton);
+
+    const closeButton = document.createElement('button');
+    closeButton.innerText = 'Close';
+    popupContent.appendChild(closeButton);
+
+    const responseMessage = document.createElement('div');
+    responseMessage.id = 'apiResponseMessage';
+    popupContent.appendChild(responseMessage);
+
+    popupContainer.appendChild(popupContent);
+    document.body.appendChild(popupContainer);
+
+    // Handle API submission
+    submitButton.onclick = function() {
+        const username = usernameInput.value;
+        const userPrompt = userPromptInput.value;
+
+        fetch('https://deepspaceai.pythonanywhere.com/get_response', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                username: username,
+                api_key: apiKey,
+                prompt: userPrompt,
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.message) {
+                responseMessage.innerHTML = `<p>${data.message}</p>`;
+            } else if (data.error) {
+                responseMessage.innerHTML = `<p style="color:red;">Error: ${data.error}</p>`;
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            responseMessage.innerHTML = `<p style="color:red;">Error: ${error.message}</p>`;
+        });
+    };
+
+    // Handle closing the popup
+    closeButton.onclick = function() {
+        document.body.removeChild(popupContainer);
+    };
+}
 
 
 
