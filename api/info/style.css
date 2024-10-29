@@ -10,14 +10,15 @@ body{
     font-family: Arial, Helvetica, sans-serif;
     background: #606060;
     color: white;
+    display: flex;
+    flex-direction: column;
 }
 body::-webkit-scrollbar{
-    width: 7px;
-    /* background-color: transparent; */
-    background: rgb(96, 96, 96);
+    width: 8px;
+    background-color: transparent;
 }
 body::-webkit-scrollbar-thumb{
-    background: #333;
+    background: rgb(96, 96, 96);
     border-radius: 5px;
 }
 
@@ -162,14 +163,29 @@ h3{
 
 
 
-/* main{ */
-    /* margin: 120px 20px; */
-    /* width: calc(100% - 40px); */
-    /* height: 100%; */
-/* } */
 
-/* .temp-api{
-    background: grey;
-    padding: 20px;
-    border-radius: 20px;
-} */
+
+
+.title{
+    display: flex;
+    justify-content: center;
+    font-size: 40px;
+    font-weight: bold;
+    padding-top: 50px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    text-shadow: 5px 5px 10px black;
+}
+h2{
+    margin: 0;
+}
+
+
+main{
+    align-self: center;
+    margin-top: 100px;
+    max-width: 800px;
+}
+main p{
+    text-align: center;
+}
